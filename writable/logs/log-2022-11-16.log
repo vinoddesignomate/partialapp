@@ -1,0 +1,81 @@
+CRITICAL - 2022-11-16 10:13:11 --> Class 'App\Libraries\Common' not found
+in APPPATH/Controllers/BaseController.php on line 51.
+ 1 SYSTEMPATH/CodeIgniter.php(890): App\Controllers\BaseController->initController()
+ 2 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-16 10:13:40 --> Class 'App\Libraries\Common' not found
+in APPPATH/Controllers/BaseController.php on line 51.
+ 1 SYSTEMPATH/CodeIgniter.php(890): App\Controllers\BaseController->initController()
+ 2 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-16 10:22:33 --> Class 'App\Controllers\UserModel' not found
+in APPPATH/Controllers/Home.php on line 12.
+ 1 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Home->__construct()
+ 2 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-16 10:23:09 --> Class 'App\Controllers\UserModel' not found
+in APPPATH/Controllers/Home.php on line 12.
+ 1 SYSTEMPATH/CodeIgniter.php(889): App\Controllers\Home->__construct()
+ 2 SYSTEMPATH/CodeIgniter.php(473): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-11-16 10:40:58 --> mysqli_sql_exception: Table 'yvuxeuwabq.big_storetokens' doesn't exist in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(42): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(25): App\Models\UserModel->checktokens()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->index()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-11-16 10:40:58 --> Call to a member function getResult() on bool
+in APPPATH/Models/UserModel.php on line 44.
+ 1 APPPATH/Controllers/Home.php(25): App\Models\UserModel->checktokens()
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->index()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-11-16 10:41:20 --> mysqli_sql_exception: Table 'yvuxeuwabq.big_storetokens' doesn't exist in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(42): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(25): App\Models\UserModel->checktokens()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->index()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-11-16 10:41:20 --> Call to a member function getResult() on bool
+in APPPATH/Models/UserModel.php on line 44.
+ 1 APPPATH/Controllers/Home.php(25): App\Models\UserModel->checktokens()
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->index()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-16 10:42:06 --> Call to a member function rest_api() on null
+in APPPATH/Controllers/Auth.php on line 105.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Auth->token()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-16 10:49:40 --> Call to undefined method App\Models\UserModel::get_tokens
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/Home.php(30): CodeIgniter\Model->__call()
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->index()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-16 10:51:39 --> Call to a member function rest_api() on null
+in APPPATH/Controllers/Home.php on line 31.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->index()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
