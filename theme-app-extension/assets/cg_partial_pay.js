@@ -1,20 +1,7 @@
-//jQuery( document ).ready(function() {  // ERROR!  jQuery library hasn't been run yet, so we can't use jQuery to select the document!
+document.addEventListener('DOMContentLoaded', function() {
 
-   // $('#add-btn').on('click', function(event){
-     // alert("clicked")
-    //}) 
-  //});
-
-  var string = "shopify_vinod";
-  var encodestfn = btoa(string);
-  var shop_name = document.location.origin;
-
-  $.ajax({
-    type: "POST",
-    url: 'https://bigthinxapp.herokuapp.com/public/index.php/check-size',
-    data: 'shopname=' + shop_name + '&pid=' + window.ShopifyAnalytics.meta.page.resourceId + '&token=' + encodestfn,
-    // dataType: "json",
-    success: function (response) {
-     // $("#dis_product_size").append(response);
-    }
+    // This event will be run after the deferred scripts above, so jQuery exists now
+    $('#add-btn').on('click', function(event){
+      alert("clicked")
+    })
   });
