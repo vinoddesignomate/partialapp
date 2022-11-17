@@ -8,7 +8,6 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
-use App\Libraries\Common; // Import library
 
 /**
  * Class BaseController
@@ -20,7 +19,7 @@ use App\Libraries\Common; // Import library
  *
  * For security be sure to declare any new methods as protected or private.
  */
-class BaseController extends Controller
+abstract class BaseController extends Controller
 {
     /**
      * Instance of the main Request object.
@@ -28,7 +27,6 @@ class BaseController extends Controller
      * @var CLIRequest|IncomingRequest
      */
     protected $request;
-    protected $common;
 
     /**
      * An array of helpers to be loaded automatically upon
@@ -48,7 +46,6 @@ class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
-        $this->common = new Common();
 
         // E.g.: $this->session = \Config\Services::session();
     }
