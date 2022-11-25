@@ -16,7 +16,7 @@ class Auth extends BaseController
 		$shop = $_GET['shop'];
 		//$scopes = 'read_products,write_products';
 
-		$scopes = 'read_products,write_products,read_orders,write_orders,read_script_tags,write_script_tags,read_content,write_content,read_themes,write_themes,read_customers,write_customers';
+		$scopes = 'read_products,write_products,read_orders,write_orders,read_script_tags,write_script_tags,read_content,write_content,read_themes,write_themes,read_customers,write_customers,read_price_rules,write_price_rules';
 		$redirect_uri = $_NGROK_URL . '/token';
 		$nonce = bin2hex(random_bytes(12));
 		$access_mode = 'per-user';

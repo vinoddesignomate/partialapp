@@ -1,9 +1,59 @@
+<script>
+console.log('cookiesdis5');
+
+function getCookieval(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  
+  let total_partial = 0;
+  let full_price = 0;
+  jQuery.getJSON('/cart.js', function(cart) {
+    for(var i=0; i<cart.items.length; i++){
+      var item = cart.items[i];
+      console.log(item);
+      if(item.properties != null && item.properties.PAYMENT_TYPE == 'Partial Pay'){
+         var getckdi  = getCookieval(item.id);
+          var part_price = (getckdi/100)*item.line_price;
+          total_partial += total_partial + parseInt(part_price);
+          //console.log(getckdi);
+          //console.log('partial pay');
+          //console.log(total_partial);
+          
+      }else {
+          full_price += full_price + parseInt(item.line_price);
+           //console.log('full pay');
+          //console.log(full_price);
+      } 
+     
+      //var price_element = $('#line-total-' + item.id);
+      //price_element.html(Shopify.formatMoney(item.line_price).replace('$','£'));
+    };
+    console.log('partial pay');
+    console.log(total_partial);
+     console.log('full pay');
+    console.log(full_price);
+  });
+  
+
+ 
+</script>
 {% schema %}
 {
   "name": "Partial Payment",
   "target": "body",
   "stylesheet": "cg_partial_pay.css",
-  "javascript": "cg_partial_pay_embend.js",
+  "javascript": "cg_partial_pay.js",
   "settings": []
 }
 {% endschema %}
