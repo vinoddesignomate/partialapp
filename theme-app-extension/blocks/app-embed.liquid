@@ -1,6 +1,4 @@
 <script>
-console.log('cookiesdis5');
-
 function getCookieval(cname) {
     let name = cname + "=";
     let ca = document.cookie.split(';');
@@ -18,31 +16,44 @@ function getCookieval(cname) {
   
   let total_partial = 0;
   let full_price = 0;
+  var grand_subtotal = 0;
+  var grand_subtotal2 = 0;
   jQuery.getJSON('/cart.js', function(cart) {
     for(var i=0; i<cart.items.length; i++){
       var item = cart.items[i];
-      console.log(item);
+      //console.log(item);
+      full_price += full_price + parseInt(item.line_price);
       if(item.properties != null && item.properties.PAYMENT_TYPE == 'Partial Pay'){
          var getckdi  = getCookieval(item.id);
           var part_price = (getckdi/100)*item.line_price;
-          total_partial += total_partial + parseInt(part_price);
-          //console.log(getckdi);
-          //console.log('partial pay');
-          //console.log(total_partial);
+          total_partial += parseInt(part_price/100);
+          
           
       }else {
-          full_price += full_price + parseInt(item.line_price);
-           //console.log('full pay');
-          //console.log(full_price);
-      } 
+         grand_subtotal2+= parseInt(item.line_price/100)
+      }
+      
+         
+      grand_subtotal+= parseInt(item.line_price/100)
+      
      
       //var price_element = $('#line-total-' + item.id);
+      //console.log(Shopify.formatMoney(item.line_price).replace('$','£'));
       //price_element.html(Shopify.formatMoney(item.line_price).replace('$','£'));
     };
-    console.log('partial pay');
-    console.log(total_partial);
-     console.log('full pay');
-    console.log(full_price);
+    //console.log(window.ShopifyAnalytics.meta.currency);
+    if(total_partial !="0"){
+      console.log('h20');
+      var grand_partial_pay  = (grand_subtotal2+total_partial);
+      var partial_payall = total_partial;
+      var remain_amont = parseInt(grand_subtotal-grand_partial_pay);
+     var chkhtnml = '<div class="cg_subtotal_box"> <ul style="list-style: none;"> <li> <span class="left-box">Partial Deposit:</span> <span class="right-box price-box"> <span class="symbol">'+grand_partial_pay+'</span> <span class="curr_symbol currency-iso">'+window.ShopifyAnalytics.meta.currency+'</span> </span> </li><li> <span class="left-box">Remaining Balance:</span> <span class="right-box price-box"> <span class="symbol">'+remain_amont+'</span> <span class="curr_symbol currency-iso">'+window.ShopifyAnalytics.meta.currency+'</span> </span> </li></ul></div>';
+
+      jQuery(".rte").before(chkhtnml);
+      jQuery("#checkout").before('<button type="button" id="cg_part_button" class="cart__checkout-button button" name="checkout" form="cart">Partial Checkout '+grand_partial_pay+' '+window.ShopifyAnalytics.meta.currency+'</button>');
+
+      jQuery("#checkout").addClass('cg_hide_pay');
+    }
   });
   
 

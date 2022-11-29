@@ -32,43 +32,46 @@ jQuery(document).ready(function () {  // ERROR!  jQuery library hasn't been run 
   }
 
   jQuery(".form button[type=submit]").addClass('cg_pre_pay');
-  jQuery(".shopify-payment-button").css('display', 'none');
 
-  $('.form').append('<button name="add" id="add_part_btn" type="button" style="background:#000;color:#fff;font-size:15px;font-weight:normal; width: 100%; margin-top: 5px;border-radius:0px;" data-sdtooltip="Available soon" class="btn  hvr-no sd_preorder top" value="Pay Full">Pay Full </button><div class="price_section"></div>');
-  jQuery(".cg_pre_pay").css('display', 'none');
+  //console.log('p7');
+  // console.log(window.ShopifyAnalytics.meta); 
+  if (window.ShopifyAnalytics.meta.product.variants[0].id != 'undefined') {
+    var varidid = window.ShopifyAnalytics.meta.product.variants[0].id;
+    var shop_name = document.location.origin;
+    $.ajax({
+      type: "POST",
+      url: 'https://phpstack-877186-3039039.cloudwaysapps.com/public/index.php/frontend-handler',
+      data: 'shopname=' + shop_name + '&vid=' + varidid + '&pid=' + window.ShopifyAnalytics.meta.page.resourceId,
+      success: function (response) {
+        if (response == 'not_found') {
+          jQuery("#cg_pay_type").hide();
+          jQuery(".shopify-payment-button").show();
+          jQuery(".cg_pre_pay").show();
+        } else {
+          jQuery("#cg_pay_type").show();
+          var result_array = JSON.parse(response);
+          // console.log(result_array);
+          // console.log(result_array['full_price']);
 
-  console.log(document.cookie);
-  var varidid = window.ShopifyAnalytics.meta.product.variants[0].id;
-  var shop_name = document.location.origin;
-  $.ajax({
-    type: "POST",
-    url: 'https://phpstack-877186-3039039.cloudwaysapps.com/public/index.php/frontend-handler',
-    data: 'shopname=' + shop_name + '&vid=' + varidid + '&pid=' + window.ShopifyAnalytics.meta.page.resourceId,
-    success: function (response) {
-      if (response == 'not_found') {
-        jQuery("#cg_pay_type").hide();
-        jQuery(".shopify-payment-button").show();
-        jQuery(".cg_pre_pay").show();
-      } else {
-        jQuery("#cg_pay_type").show();
-        var result_array = JSON.parse(response);
-        // console.log(result_array);
-        // console.log(result_array['full_price']);
+          setCookie(varidid, result_array['pro_pack'], 365);
+          // checkCookie(varidid,result_array['pro_pack'],"");
 
-        setCookie(varidid, result_array['pro_pack'], 365);
-        // checkCookie(varidid,result_array['pro_pack'],"");
+          jQuery(".shopify-payment-button").css('display', 'none');
+          $('.form').append('<button name="add" id="add_part_btn" type="button" style="background:#000;color:#fff;font-size:15px;font-weight:normal; width: 100%; margin-top: 5px;border-radius:0px;" data-sdtooltip="Available soon" class="btn  hvr-no sd_preorder top" value="Pay Full">Pay Full </button><div class="price_section"></div>');
+          jQuery(".cg_pre_pay").css('display', 'none');
 
 
-        jQuery(".price_section").html('<span id="full_pay" class="sd_partial_msg"><b class="sd-full-money">Pay full payment -  <span class="sd-money">$' + result_array['full_price'] + '</span> </b></span><span style="display:none;" id="partial_pay" class="sd_partial_msg"><b class="sd-full-money">Pay initial payment -  <span class="sd-money">$' + result_array['partial_price'] + '</span> </b></span>');
+          jQuery(".price_section").html('<span id="full_pay" class="sd_partial_msg"><b class="sd-full-money">Pay full payment -  <span class="sd-money">$' + result_array['full_price'] + '</span> </b></span><span style="display:none;" id="partial_pay" class="sd_partial_msg"><b class="sd-full-money">Pay initial payment -  <span class="sd-money">$' + result_array['partial_price'] + '</span> </b></span>');
+        }
+
       }
+    });
+  }
+  //var unique_uid = Date.now().toString(36) + Math.random().toString(36).substring(2);
 
-    }
-  });
-  var unique_uid = Date.now().toString(36) + Math.random().toString(36).substring(2);
+  jQuery(document).on("click", "#add_part_btn", function () {
+    //jQuery('#add_part_btn').on('click', function (event) {
 
-
-  jQuery('#add_part_btn').on('click', function (event) {
-    
     //console.log($('.form').serialize());
     var pqty = jQuery("input[name=quantity]").val();
     var pay_type = jQuery("input[name='sd_part_full']:checked").val();
@@ -185,8 +188,10 @@ jQuery(document).ready(function () {  // ERROR!  jQuery library hasn't been run 
   //     }
   //   });
 
-
   
+
+  // var chkhtnml = '<div id="cg_chkout_show"><span>Partial Pay: '+grand_partial_pay+' '+window.ShopifyAnalytics.meta.currency+'</span><span style="display: inherit;">Remaining Pay: '+remain_amont+' '+window.ShopifyAnalytics.meta.currency+'</span></div><button type="button" id="cg_part_button" class="cart__checkout-button button" name="checkout" form="cart">Check out '+grand_partial_pay+' '+window.ShopifyAnalytics.meta.currency+'</button>';
+
 
 });
 

@@ -1,0 +1,51 @@
+.cg_subtotal_box {
+    border: 1px solid #e3e3e3;
+    padding: 1px;
+    background: #fff;
+    -webkit-box-shadow: 0 0 12px #d3d3d3;
+    box-shadow: 0 0 12px #d3d3d3;
+    -webkit-transition: .2s;
+    transition: .2s;
+    color: #282c3f;
+    font-size: 14px;
+    position: relative;
+    margin: 20px 1px;
+    display: inline-block;
+    overflow: hidden;
+}
+.cg_subtotal_box ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.cg_subtotal_box ul li {
+    display: flex;
+    width: 100%;
+    clear: both;
+    padding: 18px 15px;
+    float: left;
+    margin: 0;
+    justify-content: space-between;
+}
+
+.cg_subtotal_box ul li .left-box {
+    text-align: left;
+}
+.cg_subtotal_box ul li .left-box, .cg_subtotal_box ul li .price-box {
+    display: inline-block;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    line-height: normal;
+    color: #565656;
+    font-weight: 400;
+    font-family: inherit;
+    float: left;
+    width: auto;
+    box-sizing: border-box;
+    min-width: 150px;
+}
+
+.cg_hide_pay{
+    display: none !important;
+}
